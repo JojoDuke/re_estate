@@ -6,7 +6,16 @@ module.exports = {
   ],
   presets: [require("nativewind/preset")],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        Rubik: ["Rubik", "sans-serif"],
+        RubikBold: ["RubikBold", "sans-serif"],
+        RubikExtraBold: ["RubikExtraBold", "sans-serif"],
+        RubikLight: ["RubikLight", "sans-serif"],
+        RubikMedium: ["RubikMedium", "sans-serif"],
+        RubikSemiBold: ["RubikSemiBold", "sans-serif"],
+      },
+    },
   },
   plugins: [],
 }
