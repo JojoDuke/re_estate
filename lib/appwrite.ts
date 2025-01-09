@@ -79,8 +79,15 @@ export async function logout() {
 // Function to get current user
 export async function getUser() {
     try {
-        const response = await account.get();
+        // First check if there's an active session
+        try {
+            const session = await account.getSession('current');
+            if (!session) return null;
+        } catch (e) {
+            return null;
+        }
 
+        const response = await account.get();
         if (response.$id) {
             const userAvatar = await avatar.getInitials(response.name);
             return {
@@ -88,6 +95,7 @@ export async function getUser() {
                 avatar: userAvatar.toString(),
             }
         }
+        return null;
     } catch (error) {
         console.error(error);
         return null;

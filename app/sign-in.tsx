@@ -5,13 +5,22 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 import images from '@/constants/images';
 import icons from '@/constants/icons';
 import { login } from '@/lib/appwrite';
+import { useGlobalContext } from '@/lib/global-provider';
+import { Redirect, useRouter } from 'expo-router';
 
 const SignIn = () => {
+    const router = useRouter();
+    const { refetch, loading, isLoggedIn } = useGlobalContext();
+    
+    if(!loading && isLoggedIn) {
+        return <Redirect href="/" />
+    }
+
     const handleSignIn = async () => {
         const response = await login();
 
         if (response) {
-            console.log(response + ': Login successful');
+            refetch();
         } else {
             console.log('Failed to login');
         }
@@ -19,14 +28,17 @@ const SignIn = () => {
 
   return (
     <SafeAreaView className='bg-white h-full'>
-        <ScrollView contentContainerClassName="h-full">
+        <ScrollView 
+            contentContainerStyle={{ flexGrow: 1 }}
+            showsVerticalScrollIndicator={false}
+        >
             <Image 
-            source={images.onboarding} 
-            className="w-full h-4/6" 
-            resizeMode="contain"
+                source={images.onboarding} 
+                className="w-full h-4/6" 
+                resizeMode="contain"
             />
 
-            <View className="px-10">
+            <View className="px-10 pb-10">
                 <Text className="text-base text-center uppercase font-Rubik text-blue-200">Welcome to re_Estate</Text>
                 <Text className="text-3xl font-RubikBold text-black-300 text-center mt-2">Let's Get You Closer to {'\n'}Your Dream Home</Text>
 

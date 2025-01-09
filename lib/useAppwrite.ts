@@ -14,7 +14,7 @@ interface UseAppwriteReturn<T, P> {
   data: T | null; // Data returned from API
   loading: boolean; // Loading state
   error: string | null; // Error message if any
-  refetch: (newParams: P) => Promise<void>; // Function to refetch data
+  refetch: (newParams?: P) => Promise<void>; // Function to refetch data
 }
 
 // Custom hook for handling Appwrite API calls
@@ -42,8 +42,12 @@ export const useAppwrite = <T, P extends Record<string, string | number>>({
         // Handle errors and show alert
         const errorMessage =
           err instanceof Error ? err.message : "An unknown error occurred";
-        setError(errorMessage);
-        Alert.alert("Error", errorMessage);
+        
+        // Don't show alert for session already active error
+        if (!errorMessage.includes("session is active")) {
+          setError(errorMessage);
+          Alert.alert("Error", errorMessage);
+        }
       } finally {
         setLoading(false);
       }
@@ -59,7 +63,7 @@ export const useAppwrite = <T, P extends Record<string, string | number>>({
   }, []);
 
   // Function to manually refetch data with new parameters
-  const refetch = async (newParams: P) => await fetchData(newParams);
+  const refetch = async (newParams?: P) => await fetchData(newParams ?? params);
 
   // Return hook values
   return { data, loading, error, refetch };
