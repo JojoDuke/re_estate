@@ -4,10 +4,17 @@ import { SafeAreaView } from 'react-native-safe-area-context';
 
 import images from '@/constants/images';
 import icons from '@/constants/icons';
+import { login } from '@/lib/appwrite';
 
 const SignIn = () => {
-    const handleSignIn = () => {
-        console.log('Sign In');
+    const handleSignIn = async () => {
+        const response = await login();
+
+        if (response) {
+            console.log(response + ': Login successful');
+        } else {
+            console.log('Failed to login');
+        }
     }
 
   return (
