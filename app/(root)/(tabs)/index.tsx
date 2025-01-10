@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity } from "react-native";
+import { Text, View, Image, TouchableOpacity, FlatList } from "react-native";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import icons from "@/constants/icons";
@@ -14,7 +14,17 @@ export default function Index() {
 
   return (
     <SafeAreaView className="bg-white h-full">
-      <View className="px-5">
+      <FlatList 
+        data={[1,2,3,4]}
+        renderItem={({item}) => <Card />}
+        keyExtractor={(item) => item.toString()}
+        numColumns={2}
+        showsVerticalScrollIndicator={false}
+        columnWrapperClassName="flex gap-5 px-5"
+        contentContainerClassName="pb-32"
+        ListHeaderComponent={() => {
+          return (
+<View className="px-5">
         <View className="flex flex-row justify-between mt-5 items-center">
           <View className="flex flex-row items-center gap-2">
             <Image source={{ uri: user?.avatar }} className="size-12 rounded-full"/>
@@ -34,13 +44,17 @@ export default function Index() {
             <Text className="text-base font-RubikBold text-blue-500">View All</Text>
             </TouchableOpacity>
           </View>
+
+          <FlatList 
+            data={[1,2,3,4]}
+            renderItem={({item}) => <FeaturedCard />}
+            keyExtractor={(item) => item.toString()}
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            bounces={false}
+            contentContainerClassName="flex flex-row gap-5 mt-5"
+          />
           
-          <View className="flex flex-row gap-5 mt-5">
-            <FeaturedCard />
-            <FeaturedCard />
-            <FeaturedCard />
-            <FeaturedCard />
-          </View>
       </View>
       {/* our recommendations */}
       <View className="my-5">
@@ -53,12 +67,13 @@ export default function Index() {
 
           <Filters />
 
-          <View className="flex flex-row gap-5 mt-5">
-            <Card />
-            <Card />
-          </View>
       </View>
       </View>
+          )
+        }}
+        />
+      
+      
       
     </SafeAreaView>
   );
