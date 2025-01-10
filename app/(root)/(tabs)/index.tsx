@@ -1,9 +1,13 @@
-import { Text, View, Image } from "react-native";
+import { Text, View, Image, TouchableOpacity } from "react-native";
 import { Link } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import icons from "@/constants/icons";
 import images from "@/constants/images";
 import { useGlobalContext } from "@/lib/global-provider";
+import Search from "@/components/Search";
+import { Card } from "@/components/Cards";
+import { FeaturedCard } from "@/components/Cards";
+import Filters from "@/components/Filters";
 
 export default function Index() {
   const { user, refetch } = useGlobalContext();
@@ -21,7 +25,41 @@ export default function Index() {
           </View>
           <Image source={icons.bell} className="size-6"/>
         </View>
+
+        <Search />
+      <View className="my-5">
+        <View className="flex flex-row items-center justify-between">
+          <Text className="text-xl font-RubikBold text-black-300">Featured</Text>
+          <TouchableOpacity>
+            <Text className="text-base font-RubikBold text-blue-500">View All</Text>
+            </TouchableOpacity>
+          </View>
+          
+          <View className="flex flex-row gap-5 mt-5">
+            <FeaturedCard />
+            <FeaturedCard />
+            <FeaturedCard />
+            <FeaturedCard />
+          </View>
       </View>
+      {/* our recommendations */}
+      <View className="my-5">
+        <View className="flex flex-row items-center justify-between">
+          <Text className="text-xl font-RubikBold text-black-300">Our Recommendations</Text>
+          <TouchableOpacity>
+            <Text className="text-base font-RubikBold text-blue-500">View All</Text>
+            </TouchableOpacity>
+          </View>
+
+          <Filters />
+
+          <View className="flex flex-row gap-5 mt-5">
+            <Card />
+            <Card />
+          </View>
+      </View>
+      </View>
+      
     </SafeAreaView>
   );
 }
