@@ -1,5 +1,5 @@
 // Import required dependencies from react-native-appwrite, expo-linking, and expo-web-browser
-import { Client, Account, Avatars, OAuthProvider, Databases } from 'react-native-appwrite';
+import { Client, Account, Avatars, OAuthProvider, Databases, Query } from 'react-native-appwrite';
 import * as Linking from 'expo-linking';
 import { openAuthSessionAsync } from 'expo-web-browser';
 
@@ -27,7 +27,7 @@ client
 // Create instances of Avatars and Account services
 export const avatar = new Avatars(client);
 export const account = new Account(client);
-export const database = new Databases(client);
+export const databases = new Databases(client);
 
 // Function to handle OAuth login with Google
 export async function login() {
@@ -108,4 +108,55 @@ export async function getUser() {
     }
 }
 
+
+export async function getLatestProperties() {
+    try {
+        const result = await databases.listDocuments(
+            config.databaseId!, 
+            config.propertiesCollectionId!, 
+            [Query.orderAsc('$createdAt'), 
+            Query.limit(4)]
+        );
+
+        return result.documents;
+
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
+
+export async function getProperties({filter, query, limit}: {
+    filter: string,
+    query: string,
+    limit?: number,
+}) {
+    try {
+        const buildQuery = [Query.orderDesc('$createdAt')];
+
+        if(filter && filter !== 'all') buildQuery.push(Query.equal('propertyType', filter));
+
+        if (query) {
+            buildQuery.push(
+                Query.or([
+                    Query.search('title', query),
+                    Query.search('address', query),
+                    Query.search('propertyType', query),
+                ])
+            )
+        }
+
+        if(limit) buildQuery.push(Query.limit(limit));
+
+        const result = await databases.listDocuments(
+            config.databaseId!, 
+            config.propertiesCollectionId!, 
+            buildQuery
+        );
+        return result.documents;
+    } catch (error) {
+        console.error(error);
+        return [];
+    }
+}
 
