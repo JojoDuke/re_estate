@@ -134,14 +134,14 @@ export async function getProperties({filter, query, limit}: {
     try {
         const buildQuery = [Query.orderDesc('$createdAt')];
 
-        if(filter && filter !== 'all') buildQuery.push(Query.equal('propertyType', filter));
+        if(filter && filter !== 'all') buildQuery.push(Query.equal('propertyTypes', filter));
 
         if (query) {
             buildQuery.push(
                 Query.or([
-                    Query.search('title', query),
+                    Query.search('name', query),
                     Query.search('address', query),
-                    Query.search('propertyType', query),
+                    Query.search('propertyTypes', query),
                 ])
             )
         }
@@ -157,6 +157,20 @@ export async function getProperties({filter, query, limit}: {
     } catch (error) {
         console.error(error);
         return [];
+    }
+}
+
+export async function getPropertyById({ id }: { id: string }) {
+    try {
+        const result = await databases.getDocument(
+            config.databaseId!,
+            config.propertiesCollectionId!,
+            id
+        );
+        return result;
+    } catch (error) {
+        console.error(error);
+        return null;
     }
 }
 

@@ -1,4 +1,4 @@
-import { Text, View, Image, TouchableOpacity, FlatList, Button } from "react-native";
+import { Text, View, Image, TouchableOpacity, FlatList, Button, ActivityIndicator } from "react-native";
 import { Link, router, useLocalSearchParams } from "expo-router";
 import { SafeAreaView } from "react-native-safe-area-context";
 import icons from "@/constants/icons";
@@ -12,6 +12,7 @@ import { useAppwrite } from "@/lib/useAppwrite";
 import { getProperties } from "@/lib/appwrite";
 import { getLatestProperties } from "@/lib/appwrite";
 import { useEffect } from "react";
+import NoResults from "@/components/NoResults";
 //import seed from "@/lib/seed";
 
 export default function Index() {
@@ -59,6 +60,13 @@ export default function Index() {
         showsVerticalScrollIndicator={false}
         columnWrapperClassName="flex gap-5 px-5"
         contentContainerClassName="pb-32"
+        ListEmptyComponent={
+          propertiesLoading ? (
+            <ActivityIndicator size="large" className="mt-5 text-blue-500"/>
+          ) : (
+            <NoResults />
+          )
+        }
         ListHeaderComponent={() => {
           return (
 <View className="px-5">
@@ -82,6 +90,11 @@ export default function Index() {
             </TouchableOpacity>
           </View>
 
+          {latestPropertiesLoading ? (
+            <ActivityIndicator size="large" className="text-blue-500" />
+          ) : !latestProperties || latestProperties.length === 0 ? (
+            <NoResults />
+          ) : (
           <FlatList 
             data={latestProperties}
             renderItem={({item}) => <FeaturedCard item={item} onPress={() => handleCardPress(item.$id)}/>}
@@ -91,7 +104,7 @@ export default function Index() {
             bounces={false}
             contentContainerClassName="flex flex-row gap-5 mt-5"
           />
-          
+          )}
       </View>
       {/* our recommendations */}
       <View className="my-5">
