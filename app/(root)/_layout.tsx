@@ -8,14 +8,14 @@ export default function AppLayout() {
 
     if(loading) {
         return (
-            <SafeAreaView className="h-full flex justify-center items-center">
+            <SafeAreaView className="h-full flex justify-center items-center bg-white">
                 <ActivityIndicator size="large" color="#0000ff" />
             </SafeAreaView>
         )
     }
 
     if(!isLoggedIn) {
-        return <Redirect href="/sign-in" />
+        return <Redirect href="/sign-in"/>
     }
     return <Slot />
 }

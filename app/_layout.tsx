@@ -1,8 +1,10 @@
-import { SplashScreen, Stack } from "expo-router";
+import { useEffect } from 'react';
+import { Stack } from 'expo-router';
+import { StatusBar } from 'expo-status-bar';
+import * as SplashScreen from 'expo-splash-screen';
 
 import "../global.css";
 import { useFonts } from "expo-font";
-import { useEffect } from "react";
 import { GlobalProvider } from "@/lib/global-provider";
 
 export default function RootLayout() {
@@ -17,16 +19,31 @@ export default function RootLayout() {
 
   useEffect(() => {
     if (fontsLoaded) {
+      // Hide splash screen after resources are loaded
       SplashScreen.hideAsync();
     }
   }, [fontsLoaded]);
 
+  // Show white status bar during loading
   if (!fontsLoaded) {
-    return null;
+    return (
+      <>
+        <StatusBar 
+          backgroundColor="#ffffff" 
+          style="dark"
+          translucent={false}
+        />
+      </>
+    );
   }
 
   return (
     <GlobalProvider>
+      <StatusBar 
+        backgroundColor="#ffffff" 
+        style="dark"
+        translucent={false}
+      />
       <Stack screenOptions={{ headerShown: false }} />
     </GlobalProvider>
   );

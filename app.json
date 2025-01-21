@@ -4,7 +4,18 @@
     "slug": "reestate-project",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/icon.png",
+    "icon": "./assets/images/MDSplash.png",
+    "splash": {
+      "image": "./assets/images/MDSplash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#FFF024",
+      "enableFullScreenImage_legacy": true,
+      "androidStatusBar": {
+        "backgroundColor": "#FFF024",
+        "translucent": false,
+        "barStyle": "dark-content"
+      }
+    },
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
@@ -16,26 +27,39 @@
       "package": "com.reestate.project",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/icon.png",
+        "foregroundImage": "./assets/images/japan.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["android.permission.INTERNET"]
+      "permissions": ["android.permission.INTERNET"],
+      "splash": {
+        "backgroundColor": "#FFF024",
+        "resizeMode": "cover",
+        "androidStatusBar": {
+          "backgroundColor": "#FFF024",
+          "translucent": false
+        }
+      }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/splash.png"
     },
     "plugins": [
       "expo-router",
       [
         "expo-splash-screen",
         {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 5,
+          "image": "./assets/images/splash.png",
+          "imageWidth": 200,
           "resizeMode": "cover",
-          "backgroundColor": "#ffffff",
-          "enableFullScreenImage_legacy": true
+          "backgroundColor": "#FFF024",
+          "enableFullScreenImage_legacy": true,
+          "androidStatusBar": {
+            "backgroundColor": "#FFF024",
+            "translucent": false,
+            "barStyle": "dark-content"
+          }
         }
       ],
       [
@@ -54,6 +78,11 @@
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#FFF024",
+      "translucent": false,
+      "barStyle": "dark-content"
     }
   }
 }

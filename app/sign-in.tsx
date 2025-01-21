@@ -1,6 +1,7 @@
 import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { StatusBar } from 'expo-status-bar';
 
 import images from '@/constants/images';
 import icons from '@/constants/icons';
@@ -27,7 +28,13 @@ const SignIn = () => {
     }
 
   return (
-    <SafeAreaView className='bg-white h-full'>
+    <>
+      <StatusBar 
+        backgroundColor="#ffffff" 
+        style="dark"
+        translucent={false}
+      />
+      <SafeAreaView className='bg-white h-full'>
         <ScrollView 
             contentContainerStyle={{ flexGrow: 1 }}
             showsVerticalScrollIndicator={false}
@@ -64,6 +71,7 @@ const SignIn = () => {
             </View>
         </ScrollView>
     </SafeAreaView>
+    </>
   )
 }
 
