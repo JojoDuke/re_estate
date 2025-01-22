@@ -1,9 +1,8 @@
-import { View, Text, ScrollView, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, Image, TouchableOpacity, ImageBackground } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
 
-import images from '@/constants/images';
 import icons from '@/constants/icons';
 import { login } from '@/lib/appwrite';
 import { useGlobalContext } from '@/lib/global-provider';
@@ -27,52 +26,66 @@ const SignIn = () => {
         }
     }
 
-  return (
-    <>
-      <StatusBar 
-        backgroundColor="#ffffff" 
-        style="dark"
-        translucent={false}
-      />
-      <SafeAreaView className='bg-white h-full'>
-        <ScrollView 
-            contentContainerStyle={{ flexGrow: 1 }}
-            showsVerticalScrollIndicator={false}
-        >
-            <Image 
-                source={images.onboarding} 
-                className="w-full h-4/6" 
-                resizeMode="contain"
+    return (
+        <>
+            <StatusBar 
+                backgroundColor="transparent" 
+                style="light"
+                translucent={true}
             />
+            <ImageBackground
+                source={require('../assets/images/onboarding.png')}
+                className="flex-1"
+                resizeMode="cover"
+            >
+                <View className="absolute inset-0 bg-black/40" />
+                <SafeAreaView className='flex-1'>
+                    <View className="flex-1 px-8 justify-center">
+                        {/* Logo and Title Section */}
+                        <View className="mb-16">
+                            <Text className="text-[#31DE37] text-6xl font-bold mb-3" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
+                                MiDa
+                            </Text>
+                            <Text className="text-white text-lg" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                                Your dream home awaits.
+                            </Text>
+                        </View>
 
-            <View className="px-10 pb-10">
-                <Text className="text-base text-center uppercase font-Rubik text-blue-200">Welcome to re_Estate</Text>
-                <Text className="text-3xl font-RubikBold text-black-300 text-center mt-2">Let's Get You Closer to {'\n'}Your Dream Home</Text>
+                        {/* Welcome Text Section */}
+                        <View className="mb-12">
+                            <Text className="text-white text-3xl mb-3" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
+                                Welcome back
+                            </Text>
+                            <Text className="text-gray-200" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                                Sign in to continue your home search journey
+                            </Text>
+                        </View>
 
-                <Text className="text-lg text-center font-Rubik text-black-300 mt-10">
-                    Login to Re_Estate with Google
-                </Text>
+                        {/* Sign In Button */}
+                        <TouchableOpacity
+                            className='shadow-lg shadow-black/10 flex flex-row items-center justify-center rounded-2xl w-full py-4 bg-white'
+                            onPress={handleSignIn}>
+                            <View className="flex flex-row items-center justify-center space-x-3">
+                                <Image 
+                                    source={icons.google}
+                                    className="w-5 h-5"
+                                    resizeMode="contain"
+                                />
+                                <Text className="text-black text-base" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
+                                    Continue with Google
+                                </Text>
+                            </View>
+                        </TouchableOpacity>
 
-                <TouchableOpacity
-                    className='shadow-zinc-300 text-center flex flex-row items-center justify-center rounded-full w-full py-4 mt-5 bg-white shadow-md'
-                    onPress={handleSignIn}>
-                    
-                    <View className="flex flex-row items-center justify-center">
-                        <Image 
-                            source={icons.google}
-                                className="w-5 h-5"
-                            resizeMode="contain"
-                        />
-
-                    <Text className="text-lg font-RubikMedium text-black-300 ml-2">Continue with Google</Text>
+                        {/* Terms Text */}
+                        <Text className="text-center mt-8 text-gray-300 px-6" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                            By continuing, you agree to our Terms of Service and Privacy Policy
+                        </Text>
                     </View>
-
-                </TouchableOpacity>
-            </View>
-        </ScrollView>
-    </SafeAreaView>
-    </>
-  )
+                </SafeAreaView>
+            </ImageBackground>
+        </>
+    )
 }
 
 export default SignIn;

@@ -15,6 +15,9 @@ export default function RootLayout() {
     RubikLight: require("../assets/fonts/Rubik-Light.ttf"),
     RubikMedium: require("../assets/fonts/Rubik-Medium.ttf"),
     RubikSemiBold: require("../assets/fonts/Rubik-SemiBold.ttf"),
+    'PlusJakartaSans-Regular': require("../assets/fonts/PlusJakartaSans-Regular.ttf"),
+    'PlusJakartaSans-Bold': require("../assets/fonts/PlusJakartaSans-Bold.ttf"),
+    'PlusJakartaSans-SemiBold': require("../assets/fonts/PlusJakartaSans-SemiBold.ttf"),
   });
 
   useEffect(() => {
