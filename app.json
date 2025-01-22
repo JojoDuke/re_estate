@@ -4,14 +4,14 @@
     "slug": "reestate-project",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/MDSplash.png",
+    "icon": "./assets/images/MDSplash3.png",
     "splash": {
-      "image": "./assets/images/MDSplash.png",
+      "image": "./assets/images/MDSplash3.png",
       "resizeMode": "cover",
-      "backgroundColor": "#FFF024",
+      "backgroundColor": "#31DE37",
       "enableFullScreenImage_legacy": true,
       "androidStatusBar": {
-        "backgroundColor": "#FFF024",
+        "backgroundColor": "#31DE37",
         "translucent": false,
         "barStyle": "dark-content"
       }
@@ -32,10 +32,10 @@
       },
       "permissions": ["android.permission.INTERNET"],
       "splash": {
-        "backgroundColor": "#FFF024",
+        "backgroundColor": "#31DE37",
         "resizeMode": "cover",
         "androidStatusBar": {
-          "backgroundColor": "#FFF024",
+          "backgroundColor": "#31DE37",
           "translucent": false
         }
       }
@@ -53,10 +53,10 @@
           "image": "./assets/images/splash.png",
           "imageWidth": 200,
           "resizeMode": "cover",
-          "backgroundColor": "#FFF024",
+          "backgroundColor": "#31DE37",
           "enableFullScreenImage_legacy": true,
           "androidStatusBar": {
-            "backgroundColor": "#FFF024",
+            "backgroundColor": "#31DE37",
             "translucent": false,
             "barStyle": "dark-content"
           }
@@ -80,7 +80,7 @@
       "typedRoutes": true
     },
     "androidStatusBar": {
-      "backgroundColor": "#FFF024",
+      "backgroundColor": "#31DE37",
       "translucent": false,
       "barStyle": "dark-content"
     }
