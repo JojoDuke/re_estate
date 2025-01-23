@@ -94,7 +94,7 @@ export default function Index() {
                 <Text className="text-xl text-black" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
                   Featured Properties
                 </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push('/explore')}>
                   <Text className="text-[#1AB02A]" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
                     View All
                   </Text>
@@ -124,7 +124,7 @@ export default function Index() {
                 <Text className="text-xl text-black" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
                   Recommended for You
                 </Text>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => router.push('/explore')}>
                   <Text className="text-[#1AB02A]" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
                     View All
                   </Text>

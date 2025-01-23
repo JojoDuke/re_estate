@@ -61,6 +61,14 @@ const Property = () => {
               </View>
             </View>
           </View>
+
+          {/* Rating Badge */}
+          <View className="flex flex-row items-center bg-white/95 px-3 py-1.5 rounded-full absolute top-4 right-4 border border-[#1AB02A]/20">
+            <Image source={icons.star} className="w-3.5 h-3.5" tintColor="#1AB02A"/>
+            <Text className="text-xs ml-1" style={{fontFamily: 'PlusJakartaSans-Bold', color: '#1AB02A'}}>
+              {property?.rating}
+            </Text>
+          </View>
         </View>
 
         {/* Content Section */}
@@ -75,7 +83,7 @@ const Property = () => {
             <View className="flex flex-row items-center">
               <Image source={icons.star} className="w-4 h-4" tintColor="#1AB02A"/>
               <Text className="text-gray-600 ml-1" style={{fontFamily: 'PlusJakartaSans-Medium'}}>
-                {property?.rating} ({property?.reviews.length} reviews)
+                {property?.rating} <Text className="bg-[#1AB02A]/10 px-2 py-0.5 rounded-full border border-[#1AB02A]/20">({property?.reviews.length} reviews)</Text>
               </Text>
             </View>
           </View>
@@ -253,8 +261,8 @@ const Property = () => {
             <Text className="text-gray-500 text-sm" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
               Price
             </Text>
-            <Text className="text-[#1AB02A] text-2xl" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
-              ${property?.price}
+            <Text className="text-2xl" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
+              ${property?.price.toLocaleString()}
             </Text>
           </View>
           <TouchableOpacity className="flex-1 ml-6 bg-[#1AB02A] py-4 rounded-2xl">

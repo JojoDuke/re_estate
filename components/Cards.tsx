@@ -15,7 +15,10 @@ export const FeaturedCard = ({ item, onPress }: Props) => {
         className="flex flex-col items-start w-72 h-80 relative"
         onPress={onPress}>
         <Image source={{uri: item.image}} className="size-full rounded-3xl"/>
-        <View className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl"/>
+        <View 
+            key="overlay"
+            className="absolute inset-0 bg-black/20 rounded-3xl"
+        />
 
         <View className="flex flex-row items-center bg-white/95 px-3 py-1.5 rounded-full absolute top-4 right-4">
             <Image source={icons.star} className="w-3.5 h-3.5" tintColor="#1AB02A"/>
@@ -41,7 +44,7 @@ export const FeaturedCard = ({ item, onPress }: Props) => {
                         Starts from
                     </Text>
                     <Text className="text-white text-lg" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
-                        ${item.price}
+                        ${item.price.toLocaleString()}
                     </Text>
                 </View>
                 <TouchableOpacity className="w-10 h-10 bg-white/20 rounded-full items-center justify-center">
@@ -60,7 +63,12 @@ export const Card = ({ item, onPress }: Props) => {
             style={{elevation: 3}}
             onPress={onPress}>
             <View className="relative">
-                <Image source={{uri: item.image}} className="w-full h-40"/>
+                <Image source={{uri: item.image}} className="w-full h-40 rounded-t-2xl"/>
+                <View 
+                    key="overlay"
+                    className="absolute inset-0 bg-black/40 rounded-t-2xl"
+                />
+                
                 <View className="absolute top-3 right-3 flex flex-row items-center bg-white/95 px-2.5 py-1 rounded-full">
                     <Image source={icons.star} className="w-3.5 h-3.5" tintColor="#1AB02A"/>
                     <Text className="text-xs ml-1" style={{fontFamily: 'PlusJakartaSans-Bold', color: '#1AB02A'}}>
@@ -90,7 +98,7 @@ export const Card = ({ item, onPress }: Props) => {
                             Starts from
                         </Text>
                         <Text className="text-[#1AB02A]" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
-                            ${item.price}
+                            ${item.price.toLocaleString()}
                         </Text>
                     </View>
                     <TouchableOpacity className="w-8 h-8 bg-[#1AB02A]/10 rounded-full items-center justify-center">
