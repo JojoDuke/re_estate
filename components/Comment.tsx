@@ -1,4 +1,4 @@
-import { View, Text, Image } from "react-native";
+import { View, Text, Image, TouchableOpacity } from "react-native";
 
 import images from "@/constants/images";
 import icons from "@/constants/icons";
@@ -10,32 +10,61 @@ interface Props {
 
 const Comment = ({ item }: Props) => {
   return (
-    <View className="flex flex-col items-start">
-      <View className="flex flex-row items-center">
-        <Image source={{ uri: item.avatar }} className="size-14 rounded-full" />
-        <Text className="text-base text-black-300 text-start font-rubik-bold ml-3">
-          {item.name}
-        </Text>
+    <View className="bg-gray-50 p-4 rounded-2xl">
+      {/* User Info */}
+      <View className="flex flex-row items-center mb-3">
+        <Image 
+          source={{ uri: item.avatar }} 
+          className="w-12 h-12 rounded-full"
+        />
+        <View className="ml-3">
+          <Text className="text-black" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
+            {item.name}
+          </Text>
+          <Text className="text-gray-500 text-sm" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+            {new Date(item.$createdAt).toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'short',
+              day: 'numeric'
+            })}
+          </Text>
+        </View>
       </View>
 
-      <Text className="text-black-200 text-base font-rubik mt-2">
+      {/* Review Text */}
+      <Text 
+        className="text-gray-600 leading-6 mb-4" 
+        style={{fontFamily: 'PlusJakartaSans-Regular'}}
+      >
         {item.review}
       </Text>
 
-      <View className="flex flex-row items-center w-full justify-between mt-4">
-        <View className="flex flex-row items-center">
-          <Image
-            source={icons.heart}
-            className="size-5"
-            tintColor={"#0061FF"}
+      {/* Interaction Section */}
+      <View className="flex flex-row items-center justify-between">
+        <TouchableOpacity 
+          className="flex flex-row items-center bg-[#1AB02A]/10 px-4 py-2 rounded-full"
+        >
+          <Image 
+            source={icons.heart} 
+            className="w-4 h-4" 
+            tintColor="#1AB02A"
           />
-          <Text className="text-black-300 text-sm font-rubik-medium ml-2">
-            120
+          <Text 
+            className="text-[#1AB02A] ml-2" 
+            style={{fontFamily: 'PlusJakartaSans-Medium'}}
+          >
+            Helpful
           </Text>
-        </View>
-        <Text className="text-black-100 text-sm font-rubik">
-          {new Date(item.$createdAt).toDateString()}
-        </Text>
+        </TouchableOpacity>
+
+        <TouchableOpacity>
+          <Text 
+            className="text-gray-500" 
+            style={{fontFamily: 'PlusJakartaSans-Regular'}}
+          >
+            Report
+          </Text>
+        </TouchableOpacity>
       </View>
     </View>
   );

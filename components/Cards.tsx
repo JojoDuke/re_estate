@@ -12,32 +12,43 @@ interface Props {
 export const FeaturedCard = ({ item, onPress }: Props) => {
   return (
     <TouchableOpacity 
-        className="flex flex-col items-start w-60 h-80 relative"
+        className="flex flex-col items-start w-72 h-80 relative"
         onPress={onPress}>
-        <Image source={{uri: item.image}} className="size-full rounded-2xl"/>
-        <Image source={images.cardGradient} className=" size-full rounded-2xl absolute bottom-0"/>
+        <Image source={{uri: item.image}} className="size-full rounded-3xl"/>
+        <View className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-3xl"/>
 
-    <View className="flex flex-row items-center bg-white/90 px-3 py-1.5 rounded-full absolute top-5 right-5">
-        <Image source={icons.star} className="size-3.5" />
-        <Text className="text-xs font-RubikBold text-blue-500 ml-1">
-          {item.rating}
-        </Text>
-    </View>
-
-      <View className="flex flex-col items-center absolute bottom-5 inset-x-5">
-        <Text
-          className="text-xl font-RubikExtraBold text-white text-center"
-          numberOfLines={1}
-        >
-          {item.name}
-        </Text>
-        <Text className="text-base font-Rubik text-white">{item.address}</Text>
-        <View className="flex flex-row items-center justify-between w-full">
-            <Text className="text-base font-Rubik text-white">Starts from</Text>
-            <Text className="text-base font-RubikBold text-white">${item.price}</Text>
-            <Image source={icons.heart} className="size-5"/>
+        <View className="flex flex-row items-center bg-white/95 px-3 py-1.5 rounded-full absolute top-4 right-4">
+            <Image source={icons.star} className="w-3.5 h-3.5" tintColor="#1AB02A"/>
+            <Text className="text-xs ml-1" style={{fontFamily: 'PlusJakartaSans-Bold', color: '#1AB02A'}}>
+                {item.rating}
+            </Text>
         </View>
-      </View>
+
+        <View className="absolute bottom-4 inset-x-4">
+            <Text
+                className="text-xl text-white mb-1"
+                style={{fontFamily: 'PlusJakartaSans-Bold'}}
+                numberOfLines={1}
+            >
+                {item.name}
+            </Text>
+            <Text className="text-white/90 mb-3" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                {item.address}
+            </Text>
+            <View className="flex flex-row items-center justify-between">
+                <View>
+                    <Text className="text-white/80" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                        Starts from
+                    </Text>
+                    <Text className="text-white text-lg" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
+                        ${item.price}
+                    </Text>
+                </View>
+                <TouchableOpacity className="w-10 h-10 bg-white/20 rounded-full items-center justify-center">
+                    <Image source={icons.heart} className="w-5 h-5" tintColor="#fff"/>
+                </TouchableOpacity>
+            </View>
+        </View>
     </TouchableOpacity>
   )
 }
@@ -45,32 +56,48 @@ export const FeaturedCard = ({ item, onPress }: Props) => {
 export const Card = ({ item, onPress }: Props) => {
     return (
         <TouchableOpacity 
-            className="flex-1 w-full mt-4 px-3 py-4 rounded-lg bg-white shadow-lg shadow-black-100/70 relative"
+            className="flex-1 mt-4 rounded-2xl bg-white shadow-lg shadow-black/5 overflow-hidden"
+            style={{elevation: 3}}
             onPress={onPress}>
+            <View className="relative">
+                <Image source={{uri: item.image}} className="w-full h-40"/>
+                <View className="absolute top-3 right-3 flex flex-row items-center bg-white/95 px-2.5 py-1 rounded-full">
+                    <Image source={icons.star} className="w-3.5 h-3.5" tintColor="#1AB02A"/>
+                    <Text className="text-xs ml-1" style={{fontFamily: 'PlusJakartaSans-Bold', color: '#1AB02A'}}>
+                        {item.rating}
+                    </Text>
+                </View>
+            </View>
 
-                <View className="flex flex-row items-center absolute px-2 top-5 right-5 bg-white/90 p-1 rounded-full z-50">
-        <Image source={icons.star} className="size-3.5" />
-        <Text className="text-xs font-RubikBold text-blue-500 ml-0.5">
-          {item.rating}
-        </Text>
-    </View>
-
-    <Image source={{uri: item.image}} className="rounded-lg w-full h-40"/>
-
-      <View className="flex flex-col mt-2">
-        <Text
-          className="text-base font-RubikBold text-black-300 text-center"
-          numberOfLines={1}
-        >
-          {item.name}
-        </Text>
-        <Text className="text-xs font-Rubik text-black-300">{item.address}</Text>
-        <View className="flex flex-row items-center justify-between mt-2">
-            <Text className="text-base font-Rubik text-black-300">Starts from</Text>
-            <Text className="text-base font-RubikBold text-blue-500">${item.price}</Text>
-            <Image source={icons.heart} className="h-5 w-5 mr-2" tintColor="#191d31"/>
-        </View>
-      </View>
+            <View className="p-3">
+                <Text
+                    className="text-base text-black mb-1"
+                    style={{fontFamily: 'PlusJakartaSans-Bold'}}
+                    numberOfLines={1}
+                >
+                    {item.name}
+                </Text>
+                <Text 
+                    className="text-gray-500 text-sm mb-2" 
+                    style={{fontFamily: 'PlusJakartaSans-Regular'}}
+                    numberOfLines={1}
+                >
+                    {item.address}
+                </Text>
+                <View className="flex flex-row items-center justify-between">
+                    <View>
+                        <Text className="text-gray-500 text-xs" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
+                            Starts from
+                        </Text>
+                        <Text className="text-[#1AB02A]" style={{fontFamily: 'PlusJakartaSans-Bold'}}>
+                            ${item.price}
+                        </Text>
+                    </View>
+                    <TouchableOpacity className="w-8 h-8 bg-[#1AB02A]/10 rounded-full items-center justify-center">
+                        <Image source={icons.heart} className="w-4 h-4" tintColor="#1AB02A"/>
+                    </TouchableOpacity>
+                </View>
+            </View>
         </TouchableOpacity>
     )
 }
