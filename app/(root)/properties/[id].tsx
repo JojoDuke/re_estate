@@ -69,6 +69,14 @@ const Property = () => {
               {property?.rating}
             </Text>
           </View>
+
+          {/* Review Count Badge - Updated position to bottom left */}
+          <View className="flex flex-row items-center bg-black/50 border-2 border-white rounded-full px-3 py-1.5 absolute bottom-4 left-4">
+            <Image source={icons.star} className="w-4 h-4" tintColor="#1AB02A"/>
+            <Text className="text-white ml-1" style={{fontFamily: 'PlusJakartaSans-Medium'}}>
+              {property?.rating} <Text className="text-white">({property?.reviews.length} reviews)</Text>
+            </Text>
+          </View>
         </View>
 
         {/* Content Section */}
@@ -78,12 +86,6 @@ const Property = () => {
             <View className="bg-[#1AB02A]/10 px-4 py-1.5 rounded-full">
               <Text className="text-[#1AB02A]" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
                 {property?.type}
-              </Text>
-            </View>
-            <View className="flex flex-row items-center">
-              <Image source={icons.star} className="w-4 h-4" tintColor="#1AB02A"/>
-              <Text className="text-gray-600 ml-1" style={{fontFamily: 'PlusJakartaSans-Medium'}}>
-                {property?.rating} <Text className="bg-[#1AB02A]/10 px-2 py-0.5 rounded-full border border-[#1AB02A]/20">({property?.reviews.length} reviews)</Text>
               </Text>
             </View>
           </View>
