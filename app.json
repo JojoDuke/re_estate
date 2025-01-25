@@ -31,7 +31,9 @@
         "foregroundImage": "./assets/images/japan.png",
         "backgroundColor": "#ffffff"
       },
-      "permissions": ["android.permission.INTERNET"],
+      "permissions": [
+        "android.permission.INTERNET"
+      ],
       "splash": {
         "backgroundColor": "#1AB02A",
         "resizeMode": "cover",
@@ -88,6 +90,14 @@
       "backgroundColor": "#1AB02A",
       "translucent": false,
       "barStyle": "dark-content"
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "fc8ef9ef-8848-483f-8e7a-29692aa60da6"
+      }
     }
   }
 }

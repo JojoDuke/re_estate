@@ -1,16 +1,23 @@
 {
   "cli": {
-    "version": ">= 3.13.3"
+    "version": ">= 3.13.3",
+    "appVersionSource": "remote"
   },
   "build": {
     "preview": {
       "android": {
-        "buildType": "apk"
-      }
-    },
-    "preview2": {
-      "android": {
-        "gradleCommand": ":app:assembleRelease"
+        "buildType": "apk",
+        "gradleCommand": ":app:assembleRelease",
+        "withoutCredentials": true
+      },
+      "env": {
+        "EXPO_PUBLIC_APPWRITE_ENDPOINT": "your_endpoint",
+        "EXPO_PUBLIC_APPWRITE_PROJECT_ID": "your_project_id",
+        "EXPO_PUBLIC_APPWRITE_DATABASE_ID": "your_database_id",
+        "EXPO_PUBLIC_APPWRITE_AGENTS_COLLECTION_ID": "your_agents_collection_id",
+        "EXPO_PUBLIC_APPWRITE_GALLERIES_COLLECTION_ID": "your_galleries_collection_id",
+        "EXPO_PUBLIC_APPWRITE_REVIEWS_COLLECTION_ID": "your_reviews_collection_id",
+        "EXPO_PUBLIC_APPWRITE_PROPERTIES_COLLECTION_ID": "your_properties_collection_id"
       }
     },
     "production": {
