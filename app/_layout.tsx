@@ -27,7 +27,7 @@ export default function RootLayout() {
     }
   }, [fontsLoaded]);
 
-  // Show white status bar during loading.
+  // Show white status bar during loading....
   if (!fontsLoaded) {
     return (
       <>
