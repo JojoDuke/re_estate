@@ -68,13 +68,15 @@ export default function Index() {
             {/* Header Section */}
             <View className="flex flex-row justify-between mt-5 items-center">
               <View className="flex flex-row items-center">
-                <Image source={{ uri: user?.avatar }} className="w-12 h-12 rounded-full"/>
+                <View className="w-12 h-12 rounded-full bg-purple-500 items-center justify-center">
+                  <Text className="text-white text-lg" style={{fontFamily: 'PlusJakartaSans-Bold'}}>JD</Text>
+                </View>
                 <View className="ml-3">
                   <Text className="text-gray-500" style={{fontFamily: 'PlusJakartaSans-Regular'}}>
                     Welcome back
                   </Text>
                   <Text className="text-lg text-black" style={{fontFamily: 'PlusJakartaSans-SemiBold'}}>
-                    {user?.name}
+                    John Doe
                   </Text>
                 </View>
               </View>

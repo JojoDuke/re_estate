@@ -2,14 +2,14 @@ import { View, Text, TouchableOpacity, Image, TextInput } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { StatusBar } from 'expo-status-bar';
+import { router } from 'expo-router';
 
 import icons from '@/constants/icons';
 import { login } from '@/lib/appwrite';
 import { useGlobalContext } from '@/lib/global-provider';
-import { Redirect, useRouter } from 'expo-router';
+import { Redirect } from 'expo-router';
 
 const SignIn = () => {
-    const router = useRouter();
     const { refetch, loading, isLoggedIn } = useGlobalContext();
     const [email, setEmail] = React.useState('');
     const [password, setPassword] = React.useState('');
@@ -29,14 +29,9 @@ const SignIn = () => {
         }, 5000);
     };
 
-    const handleSignIn = async () => {
-        const response = await login();
-
-        if (response) {
-            refetch();
-        } else {
-            console.log('Failed to login');
-        }
+    const handleSignIn = () => {
+        // Navigate directly to home
+        router.replace("/");
     }
 
     return (

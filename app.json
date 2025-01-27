@@ -4,13 +4,13 @@
     "slug": "mida-estates",
     "version": "1.3.0",
     "orientation": "portrait",
-    "icon": "./assets/images/splash-icon.png",
+    "icon": "./assets/images/splash-2.png",
     "splash": {
       "image": "./assets/images/MDSplash4.png",
       "resizeMode": "cover",
       "backgroundColor": "#1AB02A"
     },
-    "scheme": "com.bhyte.midaestates",
+    "scheme": "appwrite-callback-mida-estates",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
@@ -21,7 +21,7 @@
       "package": "com.bhyte.midaestates",
       "versionCode": 3,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/splash-icon.png",
+        "foregroundImage": "./assets/images/splash-2.png",
         "backgroundColor": "#1AB02A"
       },
       "splash": {
@@ -33,7 +33,7 @@
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/splash-icon.png"
+      "favicon": "./assets/images/splash-2.png"
     },
     "plugins": [
       "expo-router",
