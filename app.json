@@ -20,10 +20,8 @@
     "android": {
       "package": "com.bhyte.midaestates",
       "versionCode": 3,
-      "adaptiveIcon": {
-        "foregroundImage": "./assets/images/icon16.png",
-        "backgroundColor": "#1AB02A"
-      },
+      "icon": "./assets/images/icon24.png",
+      "backgroundColor": "#1AB02A",
       "splash": {
         "image": "./assets/images/MDSplash4.png",
         "resizeMode": "cover",
