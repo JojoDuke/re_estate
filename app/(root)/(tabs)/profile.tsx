@@ -1,7 +1,6 @@
-import { View, Text, ScrollView, TouchableOpacity } from 'react-native'
+import { View, Text, ScrollView, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { Image } from "expo-image";
 import icons from '@/constants/icons';
 import { settings } from '@/constants/data';
 import { router } from 'expo-router';
@@ -19,10 +18,10 @@ const Profile = () => {
     return (
       <TouchableOpacity onPress={onPress} className="flex flex-row justify-between items-center mt-5 py-3">
         <View className="flex flex-row items-center gap-3">
-          <Image source={icon} className="w-6 h-6" contentFit="contain"/>
+          <Image source={icon} className="w-6 h-6" resizeMode="contain"/>
           <Text className={`text-lg ${textStyle}`} style={{fontFamily: 'PlusJakartaSans-Medium'}}>{title}</Text>
         </View>
-        {showArrow && <Image source={icons.rightArrow} className="w-5 h-5" contentFit="contain"/>}
+        {showArrow && <Image source={icons.rightArrow} className="w-5 h-5" resizeMode="contain"/>}
       </TouchableOpacity>
     );
   }
@@ -39,7 +38,7 @@ const Profile = () => {
 
         <View className="flex flex-row mt-5 justify-between items-center">
           <Text className="text-xl" style={{fontFamily: 'PlusJakartaSans-Bold'}}>Profile</Text>
-          <Image source={icons.bell} className="w-6 h-6" contentFit="contain"/>
+          <Image source={icons.bell} className="w-6 h-6" resizeMode="contain"/>
         </View>
 
         <View className="flex-row mt-5 justify-center">
@@ -49,7 +48,7 @@ const Profile = () => {
             </View>
 
             <TouchableOpacity className="absolute bottom-11 right-2">
-              <Image source={icons.edit} className="w-9 h-9" contentFit="contain"/>
+              <Image source={icons.edit} className="w-9 h-9" resizeMode="contain"/>
             </TouchableOpacity>
 
             <Text className="text-2xl mt-2" style={{fontFamily: 'PlusJakartaSans-Bold'}}>John Doe</Text>
@@ -81,11 +80,6 @@ const Profile = () => {
               onPress={handleLogout}
               textStyle="text-red-500"
               showArrow={false}
-            />
-            <Image 
-              source={icons.logout} 
-              className="w-5 h-5 absolute right-0 top-1/2 -translate-y-1/2" 
-              tintColor="#EF4444"
             />
           </View>
         </View>

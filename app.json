@@ -4,7 +4,7 @@
     "slug": "mida-estates",
     "version": "1.3.0",
     "orientation": "portrait",
-    "icon": "./assets/images/splash-2.png",
+    "icon": "./assets/images/MDSplash4.png",
     "splash": {
       "image": "./assets/images/MDSplash4.png",
       "resizeMode": "cover",
@@ -21,7 +21,7 @@
       "package": "com.bhyte.midaestates",
       "versionCode": 3,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/splash-2.png",
+        "foregroundImage": "./assets/images/icon16.png",
         "backgroundColor": "#1AB02A"
       },
       "splash": {
