@@ -10,6 +10,10 @@
         "gradleCommand": ":app:assembleRelease",
         "withoutCredentials": true
       },
+      "ios": {
+        "developmentClient": true,
+        "distribution": "internal"
+      },
       "env": {
         "EXPO_PUBLIC_APPWRITE_ENDPOINT": "https://cloud.appwrite.io/v1",
         "EXPO_PUBLIC_APPWRITE_PROJECT_ID": "677ebbd5000afc9dc8e7",
@@ -23,6 +27,9 @@
     "production": {
       "android": {
         "buildType": "app-bundle"
+      },
+      "ios": {
+        "distribution": "internal"
       }
     }
   }
